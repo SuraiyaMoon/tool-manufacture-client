@@ -3,7 +3,7 @@ import banner from '../../images/banner.jpg';
 
 const Banner = () => {
     return (
-        <div>
+        <div className='mb-16'>
             <div className="hero min-h-screen" style={{
                 background: `url(${banner})`,
                 backgroundSize: "cover",
