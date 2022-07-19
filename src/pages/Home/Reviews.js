@@ -30,7 +30,7 @@ const Reviews = () => {
         }
     ]
     return (
-        <section className='px-12'>
+        <section className='p-12 bg-blue-50'>
             <div className='flex justify-center'>
                 <div>
                     <h4 className="text-3xl text-center text-primary font-semibold mb-4">What our Customer say</h4>

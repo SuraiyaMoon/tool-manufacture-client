@@ -4,7 +4,7 @@ import ReadMoreBtn from '../Shared/ReadMoreBtn';
 
 const OurHistory = () => {
     return (
-        <section className='my-12'>
+        <section className='my-12 bg-blue-50 p-6'>
             <h4 className="text-3xl text-center text-primary font-semibold mb-4">Our History</h4>
             <div className='grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-10 flex justify-center items-center px-12'>
                 <div>
