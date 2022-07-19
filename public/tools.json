@@ -1,0 +1,57 @@
+[
+
+    {
+      "_id": "62d632c84f4b26ba1f3cc45a",
+      "picture": "https://i.ibb.co/0t7PFhS/cordless-Blower.png",
+      "minimumQuantity": 2,
+      "availableQuantity": 42,
+      "price": 78,
+      "name": "Jordan Stevens",
+      "about": "Reprehenderit qui nulla ea ad nisi do culpa esse nostrud pariatur anim eiusmod eu. Amet ipsum veniam mollit dolor sit anim dolor id eu est. Consectetur veniam dolor aute adipisicing aliqua aliquip est labore ea ullamco dolore non.\r\n"
+    },
+    {
+      "_id": "62d632c8115267396b85307f",
+      "picture": "https://i.ibb.co/HdxggSj/cordless-Drill.png",
+      "minimumQuantity": 15,
+      "availableQuantity": 41,
+      "price": 31,
+      "name": "Gregory Conner",
+      "about": "Amet sit ad tempor quis et fugiat cupidatat. Exercitation dolor id magna occaecat nulla quis est aute ex voluptate ea culpa. Consectetur enim duis adipisicing cillum minim dolor aliqua est eu cillum sit. Excepteur amet id do Lorem ex ad duis et aliquip irure dolore.\r\n"
+    },
+    {
+      "_id": "62d632c8c1f0085ee7940b28",
+      "picture": "https://i.ibb.co/b7dq6MC/cordless-Power-Tool.png",
+      "minimumQuantity": 8,
+      "availableQuantity": 48,
+      "price": 50,
+      "name": "Evangeline Rollins",
+      "about": "Qui quis irure magna occaecat velit ipsum dolore laborum. Veniam pariatur anim dolor id quis irure ex id excepteur pariatur ullamco deserunt consectetur enim. Ad aute deserunt magna nostrud veniam ipsum. Non pariatur do cupidatat cillum enim consectetur nulla enim sunt ea non Lorem minim.\r\n"
+    },
+    {
+      "_id": "62d632c8424491398f885aa7",
+      "picture": "https://i.ibb.co/J5Dc2zd/measuring-Tool.png",
+      "minimumQuantity": 5,
+      "availableQuantity": 52,
+      "price": 65,
+      "name": "Lucia Bernard",
+      "about": "Ullamco eu esse occaecat ut magna esse esse laboris aliqua officia velit aliqua qui ea. Sint elit anim fugiat consectetur. Veniam nisi non elit qui nostrud nostrud tempor. Aliqua do occaecat velit irure ut esse sunt exercitation. In id cillum velit ex adipisicing tempor ad enim reprehenderit ex velit eu id aute. Ad eu consectetur est dolor aliqua duis.\r\n"
+    },
+    {
+      "_id": "62d632c8061276d34032e8b8",
+      "picture": "https://i.ibb.co/Yfxb6Mw/router.png",
+      "minimumQuantity": 15,
+      "availableQuantity": 25,
+      "price": 57,
+      "name": "Barbara Sims",
+      "about": "Ad excepteur elit quis consectetur eiusmod quis enim. Labore proident in officia minim eiusmod enim qui. Ipsum tempor occaecat aliquip irure nulla exercitation mollit. Culpa tempor minim consequat cillum pariatur. Quis velit adipisicing aliquip ullamco exercitation nisi irure deserunt. Ullamco aliquip ea consequat consequat mollit laboris consequat velit. Incididunt exercitation ad ut minim Lorem pariatur eiusmod occaecat eu sunt.\r\n"
+    },
+    {
+      "_id": "62d632c80115b965fccf218f",
+      "picture": "https://i.ibb.co/c1DKWL7/router-Table.png",
+      "minimumQuantity": 14,
+      "availableQuantity": 31,
+      "price": 45,
+      "name": "Margaret Barnes",
+      "about": "Adipisicing dolor laborum dolor occaecat velit. Elit cillum esse officia consequat in ut fugiat velit ex aute esse duis adipisicing. Dolore laboris mollit ex sit sint aliquip officia nisi mollit incididunt reprehenderit magna tempor laborum. Officia dolore sunt quis et occaecat in ad esse velit esse fugiat. Elit irure veniam cillum velit adipisicing fugiat exercitation commodo laborum ipsum. Duis ad ullamco sunt esse tempor. Dolor aliquip non nostrud dolor.\r\n"
+    }
+  ]
