@@ -1,12 +1,47 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import logo from '../../images/logo.png';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import Loading from '../Shared/Loading';
+import auth from '../../firebase.init';
+
 
 
 const Signup = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    //form data
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    // const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+
+    //sign in with email and pass
+    const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+    // //update profile
+    // const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    // const [token] = useToken(user || googleUser)
+
+    const navigate = useNavigate()
+    if (user) {
+        navigate('/home')
+    }
+
+
+    let signInErrorMessage;
+    if (loading) {
+        return <Loading></Loading>
+    }
+
+    if (error) {
+        signInErrorMessage = <p className="text-red-500 text-center mb-4"><small>{error?.message}</small></p>
+    }
+
+    const onSubmit = async (data) => {
+        const email = data.email;
+        const password = data.password;
+        await createUserWithEmailAndPassword(email, password)
+        // await updateProfile({ displayName: data.name });
+
+    };
     return (
         <div className='flex justify-center items-center h-screen bg-blue-50'>
             <div className="card w-96  bg-base-100 shadow-xl">
