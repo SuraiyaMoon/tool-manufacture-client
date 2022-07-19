@@ -14,7 +14,7 @@ const Banner = () => {
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                        <p className="mb-5">TOPTUL is a reliable tool brand offering a comprehensive range of high performance and superior quality tool selections to meet the demands of today’s professional users. In this latest edition of TOPTUL product tool catalogue, new developed and innovative tools, tool sets, trolleys and automotive specialty tools are also introduced for professionals.</p>
+                        <p className="mb-5">NebulaManufacture is a reliable tool brand offering a comprehensive range of high performance and superior quality tool selections to meet the demands of today’s professional users. In this latest edition of NebulaManufacture product tool catalogue, new developed and innovative tools, tool sets, trolleys and automotive specialty tools are also introduced for professionals.</p>
                         <button className="btn btn-primary">Get Started</button>
                     </div>
                 </div>

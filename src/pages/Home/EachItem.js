@@ -9,7 +9,7 @@ const EachItem = ({ tittle, about, btnTittle, icon }) => {
                 <h2 className="text-2xl">{tittle}</h2>
                 <p>{about}</p>
                 <button className='btn bg-white text-black'>{btnTittle}</button>
-                <div className='sm:w-1/2 lg:w-0'>
+                <div className='sm:w-1/2 md:w-0 lg:w-0'>
                     <hr />
                 </div>
 
