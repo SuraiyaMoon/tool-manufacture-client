@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import useTools from '../../Hooks/useTools';
 import Part from './Part';
 
 const Parts = () => {
-    const [parts, setParts] = useState([]);
-    useEffect(() => {
-        fetch('tools.json')
-            .then(res => res.json())
-            .then(data => setParts(data))
-    }, [])
+    const [parts, setParts] = useTools();
     return (
         <div>
             <h3 className='text-3xl text-primary font-semibold'>Our Provided Products</h3>
