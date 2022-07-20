@@ -21,6 +21,7 @@ const Purchase = () => {
             address: e.target.address.value,
             phone: e.target.phoneNumber.value,
         }
+        console.log(order)
     }
 
 
@@ -36,19 +37,27 @@ const Purchase = () => {
                         <h2>Please order: {part.name}</h2>
                         <form className='justify-center' onSubmit={handlePlaceOrder} >
                             <div className="form-control w-full max-w-xs my-2">
-                                <input type="text" placeholder="Write your Name" className="input input-bordered w-full max-w-xs" readOnly />
+                                <input type="text" placeholder="Write your Name"
+                                    value={user.displayName} name='name' className="input input-bordered w-full max-w-xs" readOnly />
 
                             </div>
                             <div className="form-control w-full max-w-xs my-2">
-                                <input type="email" placeholder="Enter your email address" className="input input-bordered w-full max-w-xs" readOnly />
+                                <input type="text" placeholder="Write your Name" value={part.name} className="input input-bordered w-full max-w-xs" readOnly />
 
                             </div>
                             <div className="form-control w-full max-w-xs my-2">
-                                <input type="text" placeholder="Enter your Address" className="input input-bordered w-full max-w-xs" required />
+                                <input type="email" value={user.email} className="input input-bordered w-full max-w-xs"
+                                    name='email' readOnly />
+
+                            </div>
+                            <div className="form-control w-full max-w-xs my-2">
+                                <input type="text" placeholder="Enter your Address" className="input input-bordered w-full max-w-xs"
+                                    name='address' required />
 
                             </div>
                             <div className="form-control w-full max-w-xs my-2 ">
-                                <input type="text" placeholder="Enter your Phone Number" className="input input-bordered w-full max-w-xs" required />
+                                <input type="text" placeholder="Enter your Phone Number" className="input input-bordered w-full max-w-xs"
+                                    name='phoneNumber' required />
 
                             </div>
                             <input className='text-white btn-primary btn w-full max-w-xs my-2' value="Order" type="submit" />

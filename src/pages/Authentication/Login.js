@@ -1,13 +1,59 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useForm } from "react-hook-form";
-
+import React, { useEffect } from 'react';
 import logo from '../../images/logo.png';
+import {
+    useSignInWithGoogle, useSignInWithEmailAndPassword
+} from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { useForm } from "react-hook-form";
+import Loading from '../Shared/Loading';
+import { useNavigate, useLocation, Link } from "react-router-dom";
+
 
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    //form data
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    //sign in with google
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+
+    //sign in with email and pass
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    //redirect user
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from.pathname || '/';
+
+    if (googleUser) {
+        navigate(from, { replace: true })
+    }
+    // useEffect(() => {
+    //     if (token) {
+    //         navigate(from, { replace: true })
+    //     }
+
+    // }, [token, from, navigate])
+    //loading
+    if (loading || googleLoading) {
+        return <Loading></Loading>
+    }
+    //error result
+    let signInErrorMessage;
+    if (error || googleError) {
+        signInErrorMessage = <p className="text-red-500 text-center mb-4"><small>{error?.message || googleError?.message}</small></p>
+    }
+    //form submit
+    const onSubmit = (data) => {
+        const email = data.email;
+        const password = data.password;
+        signInWithEmailAndPassword(email, password)
+    };
     return (
         <div className='flex justify-center items-center h-screen bg-blue-50'>
             <div className="card  bg-base-100 shadow-xl">
@@ -57,12 +103,13 @@ const Login = () => {
 
                             </label>
                         </div>
+                        {signInErrorMessage}
                         <input className='text-white btn-primary btn w-full max-w-xs' value="Login" type="submit" />
                     </form>
                     <p>New to NebulaManufacture? <Link to="/signup" className='text-primary'>Create New account</Link></p>
                     <div className="divider">OR</div>
 
-                    <div
+                    <div onClick={() => signInWithGoogle()}
                         className="btn btn-primary btn-outline">Continue with Google</div>
                 </div>
             </div>

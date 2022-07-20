@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import logo from '../../images/logo.png';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
 import auth from '../../firebase.init';
 
@@ -12,12 +12,13 @@ const Signup = () => {
     //form data
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    // const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    //sign in with google
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
     //sign in with email and pass
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
-    // //update profile
-    // const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    //update profile
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     // const [token] = useToken(user || googleUser)
 
     const navigate = useNavigate()
@@ -39,7 +40,7 @@ const Signup = () => {
         const email = data.email;
         const password = data.password;
         await createUserWithEmailAndPassword(email, password)
-        // await updateProfile({ displayName: data.name });
+        await updateProfile({ displayName: data.name });
 
     };
     return (
@@ -102,12 +103,13 @@ const Signup = () => {
 
                             </label>
                         </div>
+                        {signInErrorMessage}
                         <input className='text-white btn-primary btn w-full max-w-xs' value="Signup" type="submit" />
                     </form>
                     <p>Already have an account? <Link to="/login" className='text-primary'>Login</Link></p>
                     <div className="divider">OR</div>
 
-                    <div
+                    <div onClick={() => signInWithGoogle()}
                         className="btn btn-primary btn-outline">Continue with Google</div>
                 </div>
             </div>
