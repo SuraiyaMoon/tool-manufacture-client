@@ -12,10 +12,23 @@ const UserRow = ({ user, index }) => {
 
         })
 
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 403) {
+                    toast.error('Failed to make an admin')
+                }
+
+                return res.json()
+            })
             .then(data => {
+                if (data.modifiedCount > 0) {
+
+                    toast.success(`successfully make an admin`)
+                }
+                else {
+
+                }
                 console.log(data)
-                toast.success(`successfully make an admin`)
+
             })
     }
     return (
