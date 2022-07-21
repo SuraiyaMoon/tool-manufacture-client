@@ -9,6 +9,6 @@ const usePartDetail = id => {
             .then(data => setPart(data))
     }, [id])
 
-    return [part];
+    return [part, setPart];
 }
 export default usePartDetail;
