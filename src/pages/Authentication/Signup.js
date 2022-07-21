@@ -5,6 +5,7 @@ import logo from '../../images/logo.png';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 
 
 
@@ -19,21 +20,22 @@ const Signup = () => {
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
     //update profile
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-    // const [token] = useToken(user || googleUser)
+    const [token] = useToken(user || googleUser)
 
     const navigate = useNavigate()
-    if (user) {
-        navigate('/home')
-    }
+
 
 
     let signInErrorMessage;
-    if (loading) {
+    if (loading || googleLoading || updating) {
         return <Loading></Loading>
     }
 
-    if (error) {
+    if (error || googleError || updateError) {
         signInErrorMessage = <p className="text-red-500 text-center mb-4"><small>{error?.message}</small></p>
+    }
+    if (token) {
+        navigate('/dashboard')
     }
 
     const onSubmit = async (data) => {
