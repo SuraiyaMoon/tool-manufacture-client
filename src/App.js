@@ -8,6 +8,7 @@ import Login from './pages/Authentication/Login';
 import Signup from './pages/Authentication/Signup';
 import RequireAuth from './pages/Authentication/RequireAuth';
 import Blogs from './pages/Blogs/Blogs';
+import Portfolio from './pages/Portfolio/Portfolio';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
+        <Route path='/portfolio' element={<Portfolio />}></Route>
       </Routes>
 
 
