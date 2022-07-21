@@ -17,25 +17,20 @@ const Purchase = () => {
     const [part, setPart] = usePartDetail(id);
     const [user, loading] = useAuthState(auth);
     const minimumQuantity = part.minimumQuantity;
-    const [quantity, setQuantity] = useState(minimumQuantity)
-    const increaseQuantity = () => {
-        let quantity = minimumQuantity + 1;
-        setQuantity(quantity)
-    }
+    // const [quantity, setQuantity] = useState(minimumQuantity)
     // const increaseQuantity = () => {
-    //     const minimumQuantity = part.minimumQuantity;
-    //     const availableQuantity = part.availableQuantity;
-    //     let quantity = part.minimumQuantity;
-    //     // if (quantity < minimumQuantity || quantity > availableQuantity) {
-    //     //     alert(`You cannnot order more or less than minimum and availableQuantity`)
-    //     // }
-    //     // else {
-    //     quantity = quantity + 1;
-    //     // availableQuantity = availableQuantity - quantity;
-    //     // part[availableQuantity] = availableQuantity;
-    //     // setPart(part)
+    //     let quantity = minimumQuantity + 1;
+    //     setQuantity(quantity)
+    // }
+    const increaseQuantity = () => {
+        const minimumQuantity = part.minimumQuantity;
+        let availableQuantity = part.availableQuantity;
+        let quantity = part.minimumQuantity;
+        if (quantity < minimumQuantity || quantity > availableQuantity) {
+            alert(`You cannnot order more or less than minimum and availableQuantity`)
+        }
+    }
 
-    //     // }
 
 
 
@@ -48,7 +43,7 @@ const Purchase = () => {
             tool: part.name,
             address: e.target.address.value,
             phone: e.target.phoneNumber.value,
-            quantity: e.target.quantity.value
+            quantity: e.target.quantity.defaultValue
         }
         console.log(order)
         fetch('http://localhost:5000/order', {
@@ -96,7 +91,7 @@ const Purchase = () => {
                                     <button onClick={increaseQuantity}
 
                                         className="btn btn-default m-2"><FontAwesomeIcon icon={faPlus}></FontAwesomeIcon></button>
-                                    <input name='quantity' type="number" defaultValue={part.minimumQuantity} className="input input-bordered w-full m-2 max-w-xs" readOnly />
+                                    <input name='quantity' type="number" defaultValue={1} className="input input-bordered w-full m-2 max-w-xs" readOnly />
                                     <button className="btn btn-default m-2"><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></button>
 
                                 </div>

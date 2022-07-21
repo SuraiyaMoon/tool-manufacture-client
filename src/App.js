@@ -11,6 +11,9 @@ import Blogs from './pages/Blogs/Blogs';
 import Portfolio from './pages/Portfolio/Portfolio';
 
 import { ToastContainer } from 'react-toastify';
+import MyOrders from './pages/MyOrders/MyOrders';
+import AddReview from './pages/AddReview/AddReview';
+import Dashboard from './pages/DashBoard/DashBoard';
 
 function App() {
   return (
@@ -30,6 +33,17 @@ function App() {
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/portfolio' element={<Portfolio />}></Route>
+
+        <Route path='/dashboard' element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        }>
+          <Route index element={<MyOrders />}></Route>
+          <Route path='addReview' element={<AddReview />}></Route>
+
+        </Route>
+
       </Routes>
       <ToastContainer></ToastContainer>
 
