@@ -43,7 +43,8 @@ const Purchase = () => {
             tool: part.name,
             address: e.target.address.value,
             phone: e.target.phoneNumber.value,
-            quantity: e.target.quantity.defaultValue
+            quantity: e.target.quantity.defaultValue,
+            price: part.price
         }
         console.log(order)
         fetch('http://localhost:5000/order', {

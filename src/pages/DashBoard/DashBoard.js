@@ -18,6 +18,8 @@ const Dashboard = () => {
                 <ul className="menu p-4 overflow-y-auto w-68 bg-base-100 text-base-content">
                     <li className='text-primary'><Link to="/dashboard">My order</Link></li>
                     <li className='text-primary'><Link to="/dashboard/addReview">Add review</Link></li>
+                    <li className='text-primary'><Link to="/dashboard/myProfile">My Profile</Link></li>
+                    <li className='text-primary'><Link to="/dashboard/users">All User</Link></li>
 
                 </ul>
             </div>
