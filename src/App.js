@@ -9,15 +9,15 @@ import Signup from './pages/Authentication/Signup';
 import RequireAuth from './pages/Authentication/RequireAuth';
 import Blogs from './pages/Blogs/Blogs';
 import Portfolio from './pages/Portfolio/Portfolio';
-
-import { ToastContainer } from 'react-toastify';
-
-import AddReview from './pages/AddReview/AddReview';
+import AddReview from './pages/DashBoard/AddReview';
 import Dashboard from './pages/DashBoard/DashBoard';
 import MyOrders from './pages/DashBoard/MyOrders';
 import MyProfile from './pages/DashBoard/MyProfile';
 import Users from './pages/DashBoard/Users';
 import RequireAdmin from './pages/DashBoard/RequireAdmin';
+
+import { ToastContainer } from 'react-toastify';
+
 
 function App() {
   return (

@@ -3,32 +3,11 @@ import Review from './Review';
 import people1 from '../../images/people1.png';
 import people2 from '../../images/people2.png';
 import people3 from '../../images/people3.png';
+import useReview from '../../Hooks/useReview';
 
 const Reviews = () => {
-    const reviews = [
-        {
-            _id: 1,
-            img: people1,
-            clientReview: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more.',
-            name: "Assaduzzaman",
-            country: "Bangladesh"
-        },
-        {
-            _id: 2,
-            img: people2,
-            clientReview: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribute to using Content here, content.',
-            name: "Amelia",
-            country: "Canada"
+    const [reviews, setReviews] = useReview()
 
-        },
-        {
-            _id: 3,
-            img: people3,
-            clientReview: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribute to using Content here, content.',
-            name: "Sophia",
-            country: "California"
-        }
-    ]
     return (
         <section className='p-12 bg-blue-50'>
             <div className='flex justify-center'>

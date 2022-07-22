@@ -1,0 +1,24 @@
+ [
+    {
+        "_id": 1,
+        "img": "https://i.ibb.co/FJL75hx/people1.png",
+        "clientReview": "Portable Workbench Convenience When you need a portable workbench, what’s the first thing that comes to your mind? A couple of sawhorses and a sheet of plywood is a common go-to. There are some concerns about holding capacity and stability, though",
+        "name": "Assaduzzaman",
+        "country": "Bangladesh"
+    },
+    {
+        "_id": 2,
+        "img":"https://i.ibb.co/kDHmTVK/people2.png" ,
+        "clientReview": "Kershaw Flatbed Is An Affordable, Functional EDC Pocket Knife Without even looking at the Kershaw Flatbed pocket knife, the name indicates a highly functional utility. Our knives have to work for a spot in our pockets " ,
+        "name": "Amelia",
+        "country": "Canada"
+
+    },
+    {
+        "_id": 3,
+        "img": "https://i.ibb.co/hXpF360/people3.png",
+        "clientReview": "Triple Hammer Impact Driver Enters Second Generation Out of dozens of the cordless impact drivers we’ve tested, the Metabo HPT MultiVolt 36V Triple Hammer Impact Driver is one of the most unique with its 3-hammer design",
+        "name": "Sophia",
+        "country": "California"
+    }
+]

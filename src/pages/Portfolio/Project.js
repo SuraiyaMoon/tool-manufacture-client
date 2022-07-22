@@ -14,7 +14,8 @@ const Project = () => {
             </div>
             <div className="stack mx-2">
                 <h2 className='text-white'>Project-2</h2>
-                <img src="https://placeimg.com/112/112/arch" alt="Image 1" className="rounded" />
+                <a target="_blank" href="https://lustrous-sunburst-343cdd.netlify.app/"><img src="https://placeimg.com/112/112/arch" alt="Image 1" className="rounded" /></a>
+
                 <img src="https://placeimg.com/112/112/arch" alt="Image 2" className="rounded" />
                 <img src="https://placeimg.com/112/112/arch" alt="Image 3" className="rounded" />
             </div>
