@@ -16,7 +16,7 @@ const MyOrders = () => {
     useEffect(() => {
         if (user) {
             const email = user?.email;
-            fetch(`http://localhost:5000/order?email=${email}`, {
+            fetch(`http://localhost:5000/orderByEmail?email=${email}`, {
                 method: "GET",
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -54,6 +54,8 @@ const MyOrders = () => {
                         <tr>
                             <th></th>
                             <th>Product Name</th>
+                            <th>Total price</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>

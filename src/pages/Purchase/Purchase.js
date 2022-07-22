@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import usePartDetail from '../../Hooks/usePartDetail';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -10,14 +10,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
+
+
 const Purchase = () => {
     const { id } = useParams()
-    const [part, setPart] = usePartDetail(id);
-    const [user, loading] = useAuthState(auth);
-
-
-
-
+    const [part] = usePartDetail(id);
+    const [user] = useAuthState(auth);
+    const [quantity, setQuantity] = useState(null)
 
 
     const handlePlaceOrder = e => {
@@ -29,7 +28,7 @@ const Purchase = () => {
             address: e.target.address.value,
             phone: e.target.phoneNumber.value,
             quantity: e.target.quantity.defaultValue,
-            price: part.price
+            price: part.price * quantity
         }
         console.log(order)
         fetch('http://localhost:5000/order', {
@@ -53,6 +52,43 @@ const Purchase = () => {
 
 
 
+    const handleIncOrDec = (type, e) => {
+        e.preventDefault()
+        if (!type) {
+            throw new Error('Pass type to this function')
+        }
+
+        if (type === 'inc') {
+            if (quantity >= part.availableQuantity) {
+                alert(`You cant order more than ${part.availableQuantity} `)
+
+            }
+            else {
+                setQuantity(quantity + 1)
+            }
+
+        }
+        if ('dec') {
+
+
+            if (quantity <= part.minimumQuantity) {
+                alert(`You have to order at least ${part.minimumQuantity} piece `)
+
+            }
+            else {
+                setQuantity(quantity - 1)
+            }
+
+        }
+
+
+    }
+
+    useEffect(() => {
+
+        setQuantity(part.minimumQuantity)
+    }, [part.minimumQuantity])
+
 
     return (
         <div className=' mx-auto my-3'>
@@ -75,9 +111,15 @@ const Purchase = () => {
 
                                 <div className='flex '>
                                     <button 
+                                        onClick={(e) =>
+                                            handleIncOrDec('inc', e)
+                                        }
                                         className="btn btn-default m-2"><FontAwesomeIcon icon={faPlus}></FontAwesomeIcon></button>
-                                    <input name='quantity' type="number" defaultValue={1} className="input input-bordered w-full m-2 max-w-xs" readOnly />
-                                    <button className="btn btn-default m-2"><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></button>
+                                    <input name='quantity' type="number" value={quantity} className="input input-bordered w-full m-2 max-w-xs" readOnly />
+                                    <button onClick={(e) =>
+                                        handleIncOrDec('dec', e)
+                                    }
+                                        className="btn btn-default m-2"><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></button>
 
                                 </div>
 

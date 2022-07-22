@@ -46,9 +46,7 @@ const Blogs = () => {
                 <div className="card-body">
                     <h2 className="card-title">What is unit test? why should you write unit test?</h2>
 
-                    <ul>
-
-                    </ul>
+                    <p>Unit testing is a software testing method.By this method every component of software can be tested.It helps to detect bug and thus i should write unit test</p>
                 </div>
             </article>
 

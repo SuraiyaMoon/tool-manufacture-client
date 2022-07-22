@@ -20,6 +20,8 @@ import { ToastContainer } from 'react-toastify';
 import AddProducts from './pages/DashBoard/AddProducts';
 import ManageProduct from './pages/DashBoard/ManageProduct';
 import Notfound from './pages/Notfound/Notfound';
+import ManageOrder from './pages/DashBoard/ManageOrder';
+import Payment from './pages/DashBoard/Payment';
 
 
 function App() {
@@ -48,12 +50,16 @@ function App() {
         }>
           <Route index element={<MyOrders />}></Route>
           <Route path='addReview' element={<AddReview />}></Route>
+          <Route path='payment/:id' element={<Payment />}></Route>
           <Route path='myProfile' element={<MyProfile />}></Route>
           <Route path='users' element={<RequireAdmin>
             <Users />
           </RequireAdmin>}></Route>
           <Route path='manageProduct' element={<RequireAdmin>
             <ManageProduct />
+          </RequireAdmin>}></Route>
+          <Route path='manageOrder' element={<RequireAdmin>
+            <ManageOrder />
           </RequireAdmin>}></Route>
           <Route path='addProduct' element={<RequireAdmin>
             <AddProducts />
