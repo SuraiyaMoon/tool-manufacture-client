@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import usePartDetail from '../../Hooks/usePartDetail';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -13,7 +13,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Purchase = () => {
-    const { id } = useParams()
+    const { id } = useParams();
+    const navigate = useNavigate();
     const [part] = usePartDetail(id);
     const [user] = useAuthState(auth);
     const [quantity, setQuantity] = useState(null)
@@ -44,44 +45,31 @@ const Purchase = () => {
                 console.log(data)
                 if (data.insertedId) {
                     toast('Your order is placed.Please make your payment');
+                    navigate('/dashboard')
 
                 }
             })
     }
 
-
-
-
-    const handleIncOrDec = (type, e) => {
+    const handleIncrease = e => {
         e.preventDefault()
-        if (!type) {
-            throw new Error('Pass type to this function')
-        }
-
-        if (type === 'inc') {
-            if (quantity >= part.availableQuantity) {
-                alert(`You cant order more than ${part.availableQuantity} `)
-
-            }
-            else {
-                setQuantity(quantity + 1)
-            }
+        if (quantity === part.availableQuantity) {
+            alert(`You cant order more than available Quantity ${part.availableQuantity} `)
 
         }
-        if ('dec') {
-
-
-            if (quantity <= part.minimumQuantity) {
-                alert(`You have to order at least ${part.minimumQuantity} piece `)
-
-            }
-            else {
-                setQuantity(quantity - 1)
-            }
+        else {
+            setQuantity(quantity + 1)
+        }
+    }
+    const handleDecrease = e => {
+        e.preventDefault()
+        if (quantity <= part.minimumQuantity) {
+            alert(`You have to order at least ${part.minimumQuantity} piece `)
 
         }
-
-
+        else {
+            setQuantity(quantity - 1)
+        }
     }
 
     useEffect(() => {
@@ -112,12 +100,12 @@ const Purchase = () => {
                                 <div className='flex '>
                                     <button 
                                         onClick={(e) =>
-                                            handleIncOrDec('inc', e)
+                                            handleIncrease(e)
                                         }
                                         className="btn btn-default m-2"><FontAwesomeIcon icon={faPlus}></FontAwesomeIcon></button>
                                     <input name='quantity' type="number" value={quantity} className="input input-bordered w-full m-2 max-w-xs" readOnly />
                                     <button onClick={(e) =>
-                                        handleIncOrDec('dec', e)
+                                        handleDecrease(e)
                                     }
                                         className="btn btn-default m-2"><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></button>
 

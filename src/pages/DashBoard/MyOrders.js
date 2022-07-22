@@ -6,12 +6,15 @@ import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import OrderRow from './OrderRow';
 import Loading from '../Shared/Loading'
+import { toast } from 'react-toastify';
 
 const MyOrders = () => {
 
     const [user, loading] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
     const navigate = useNavigate();
+
+
 
     useEffect(() => {
         if (user) {
@@ -40,12 +43,21 @@ const MyOrders = () => {
         }
 
     }, [user])
+    const deletingOrder = id => {
+        fetch(`http://localhost:5000/order/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                setOrders([...orders, data])
+                toast.success("Successfully deleted order")
+            })
+
+    }
+
     if (loading) {
         return <Loading></Loading>
     }
-
-
-
     return (
         <div>
             <div className="overflow-x-auto">
@@ -61,11 +73,13 @@ const MyOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {orders.map((order, index) =>
+                        {
+                            orders.map((order, index) =>
                             <OrderRow
                                 key={index}
                                 order={order}
                                 index={index}
+                                    deletingOrder={deletingOrder}
                             ></OrderRow>
                         )}
 

@@ -19,6 +19,24 @@ You may also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+***
+# About Projects
+ This is a site of tool manufacturer.This site has many tools .First i created home page.In home page there are navbar, a banner,list of tools,reviews,ask question ,company history and a footer. In every product there is a buy now button and by clicking it it will navigate purchase page.In this project there is dashboard for user and admin.In this project i implement google and gmail-password authentication.
+
+
+ # List of Technology Used for this project
+ * HTML
+ * CSS framework: Tailwind
+ * React
+ * firebase -For authentication
+ * React-Query
+ * React firebase hooks
+ * React hooks form
+ * React toastify
+ * React Router
+ * Stripe -For payment
+
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\

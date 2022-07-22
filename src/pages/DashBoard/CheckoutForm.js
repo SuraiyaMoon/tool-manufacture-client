@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const CheckoutForm = ({ order }) => {
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
@@ -100,6 +103,8 @@ const CheckoutForm = ({ order }) => {
                     console.log(data)
                 })
             setSuccess('Your payment is completed')
+            navigate('/dashboard')
+            toast.success(`${user.displayName} your Payment successfully placed`)
         }
 
 

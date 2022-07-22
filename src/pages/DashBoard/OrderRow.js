@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const OrderRow = ({ order, index }) => {
-    const { tool, price, paid, _id, transactionId } = order;
+const OrderRow = ({ order, index, deletingOrder }) => {
+    const { tool, price, paid, _id, transactionId, } = order;
+
+
 
     return (
         <tr>
@@ -10,8 +12,8 @@ const OrderRow = ({ order, index }) => {
             <td>{tool}</td>
             <td>$ {price}</td>
             <td>{(price && !paid) && <div className='flex items-center'>
-                <Link to={`/dashboard/payment/${_id}`}> <button className='btn btn-xs btn-success text-white'>Pay</button></Link>
-                <td><button className='btn btn-xs '>Cancel order</button></td>
+                <Link to={`/dashboard/payment/${_id}`}> <button className='btn btn-xs btn-success text-white mx-8'>Pay</button></Link>
+                <button onClick={() => deletingOrder(_id)} className='btn btn-xs '>Cancel order</button>
 
             </div>}</td>
             <td>{(price && paid) && <>
