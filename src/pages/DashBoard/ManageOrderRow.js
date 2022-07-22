@@ -7,7 +7,7 @@ const ManageOrderRow = ({ index, order }) => {
             <th>{index + 1}</th>
             <td>{order.tool}</td>
             {
-                (paid && status === "pending") ? <td><button className='btn btn-xs btn-success text-white'>Pending</button></td>
+                paid ? <td><button className='btn btn-xs btn-success text-white'>Pending</button></td>
                     :
                     <>
                         <td><button className='btn btn-xs btn-success text-white'>Unpaid</button></td>
