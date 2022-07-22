@@ -31,7 +31,7 @@ const AddProduct = () => {
                         minimumQuantity: data.minimumQuantity,
                         about: data.about
                     }
-                    fetch('http://localhost:5000/tool', {
+                    fetch('https://gentle-taiga-09287.herokuapp.com/tool', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

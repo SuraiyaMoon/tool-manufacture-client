@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51LLgWFKvV1yc3oCUWlQFmaMWW1G2JeY1yFcrK
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `http://localhost:5000/order/${id}`;
+    const url = `https://gentle-taiga-09287.herokuapp.com/order/${id}`;
     const { data: order, isLoading } = useQuery(['order', id], () => fetch(url, {
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

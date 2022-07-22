@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 const useTools = () => {
     const [parts, setParts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/tools')
+        fetch('https://gentle-taiga-09287.herokuapp.com/tools')
             .then(res => res.json())
             .then(data => setParts(data))
 

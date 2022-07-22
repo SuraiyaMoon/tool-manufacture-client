@@ -4,7 +4,7 @@ import { useState } from "react";
 const usePartDetail = id => {
     const [part, setPart] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/tools/${id}`)
+        fetch(`https://gentle-taiga-09287.herokuapp.com/tools/${id}`)
             .then(res => res.json())
             .then(data => setPart(data))
     }, [id])

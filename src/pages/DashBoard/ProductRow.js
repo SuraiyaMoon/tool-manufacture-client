@@ -11,7 +11,7 @@ const ProductRow = ({ part, index }) => {
     const handleProductDeleting = id => {
         const proceed = window.confirm('Are you want to proceed')
         if (proceed) {
-            const url = `http://localhost:5000/tools/${id}`;
+            const url = `https://gentle-taiga-09287.herokuapp.com/tools/${id}`;
             fetch(url, {
                 method: "DELETE",
             })

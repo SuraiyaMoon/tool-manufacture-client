@@ -32,7 +32,7 @@ const Purchase = () => {
             price: part.price * quantity
         }
         console.log(order)
-        fetch('http://localhost:5000/order', {
+        fetch('https://gentle-taiga-09287.herokuapp.com/order', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

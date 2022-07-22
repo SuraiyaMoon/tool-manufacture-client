@@ -31,7 +31,7 @@ const AddReview = () => {
                         country: data.country,
                         img: img
                     }
-                    fetch('http://localhost:5000/review', {
+                    fetch('https://gentle-taiga-09287.herokuapp.com/review', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

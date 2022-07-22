@@ -19,7 +19,7 @@ const MyOrders = () => {
     useEffect(() => {
         if (user) {
             const email = user?.email;
-            fetch(`http://localhost:5000/orderByEmail?email=${email}`, {
+            fetch(`https://gentle-taiga-09287.herokuapp.com/orderByEmail?email=${email}`, {
                 method: "GET",
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -44,7 +44,7 @@ const MyOrders = () => {
 
     }, [user])
     const deletingOrder = id => {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://gentle-taiga-09287.herokuapp.com/order/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
