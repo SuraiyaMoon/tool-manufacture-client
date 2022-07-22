@@ -11,25 +11,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Purchase = () => {
-
-
     const { id } = useParams()
     const [part, setPart] = usePartDetail(id);
     const [user, loading] = useAuthState(auth);
-    const minimumQuantity = part.minimumQuantity;
-    // const [quantity, setQuantity] = useState(minimumQuantity)
-    // const increaseQuantity = () => {
-    //     let quantity = minimumQuantity + 1;
-    //     setQuantity(quantity)
-    // }
-    const increaseQuantity = () => {
-        const minimumQuantity = part.minimumQuantity;
-        let availableQuantity = part.availableQuantity;
-        let quantity = part.minimumQuantity;
-        if (quantity < minimumQuantity || quantity > availableQuantity) {
-            alert(`You cannnot order more or less than minimum and availableQuantity`)
-        }
-    }
+
 
 
 
@@ -89,8 +74,7 @@ const Purchase = () => {
                             <div className="form-control w-full max-w-xs my-2">
 
                                 <div className='flex '>
-                                    <button onClick={increaseQuantity}
-
+                                    <button 
                                         className="btn btn-default m-2"><FontAwesomeIcon icon={faPlus}></FontAwesomeIcon></button>
                                     <input name='quantity' type="number" defaultValue={1} className="input input-bordered w-full m-2 max-w-xs" readOnly />
                                     <button className="btn btn-default m-2"><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></button>

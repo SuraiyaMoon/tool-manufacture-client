@@ -18,6 +18,8 @@ import RequireAdmin from './pages/DashBoard/RequireAdmin';
 
 import { ToastContainer } from 'react-toastify';
 import AddProducts from './pages/DashBoard/AddProducts';
+import ManageProduct from './pages/DashBoard/ManageProduct';
+import Notfound from './pages/Notfound/Notfound';
 
 
 function App() {
@@ -50,11 +52,15 @@ function App() {
           <Route path='users' element={<RequireAdmin>
             <Users />
           </RequireAdmin>}></Route>
+          <Route path='manageProduct' element={<RequireAdmin>
+            <ManageProduct />
+          </RequireAdmin>}></Route>
           <Route path='addProduct' element={<RequireAdmin>
             <AddProducts />
           </RequireAdmin>}></Route>
 
         </Route>
+        <Route path='*' element={<Notfound></Notfound>}></Route>
 
       </Routes>
       <ToastContainer></ToastContainer>
