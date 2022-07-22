@@ -13,8 +13,6 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([]);
     const navigate = useNavigate();
 
-
-
     useEffect(() => {
         if (user) {
             const email = user?.email;

@@ -17,6 +17,7 @@ import Users from './pages/DashBoard/Users';
 import RequireAdmin from './pages/DashBoard/RequireAdmin';
 
 import { ToastContainer } from 'react-toastify';
+import AddProducts from './pages/DashBoard/AddProducts';
 
 
 function App() {
@@ -48,6 +49,9 @@ function App() {
           <Route path='myProfile' element={<MyProfile />}></Route>
           <Route path='users' element={<RequireAdmin>
             <Users />
+          </RequireAdmin>}></Route>
+          <Route path='addProduct' element={<RequireAdmin>
+            <AddProducts />
           </RequireAdmin>}></Route>
 
         </Route>

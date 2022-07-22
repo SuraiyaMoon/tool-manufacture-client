@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 
 
-const AddReview = () => {
+const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     //img key for uploading
     const imageStorageKey = '1cb41f882b6d2bb9352a1f97c6742796';
@@ -24,53 +24,55 @@ const AddReview = () => {
             .then(result => {
                 if (result.success) {
                     const img = result.data.url;
-                    const review = {
+                    const product = {
                         name: data.name,
-                        email: data.email,
-                        clientReview: data.review,
-                        country: data.country,
-                        img: img
+                        img: img,
+                        availableQuantity: data.availableQuantity,
+                        minimumQuantity: data.minimumQuantity,
+                        about: data.about
                     }
-                    fetch('http://localhost:5000/review', {
+                    fetch('http://localhost:5000/tool', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
                             authorization: `Bearer ${localStorage.getItem('accessToken')}`
                         },
-                        body: JSON.stringify(review)
+                        body: JSON.stringify(product)
                     })
                         .then(res => res.json())
                         .then(inserted => {
                             if (inserted.insertedId) {
-                                toast('Review added');
+                                toast('Product added');
                                 reset();
                             }
                             else {
                                 toast.error('failed to added')
                             }
+
                         })
 
                 }
             })
+        console.log(data)
     }
 
     return (
         <div className='card w-96 bg-base-100  flex justify-center items-center'>
-            <h2 className='text-xl'>Add a Review</h2>
+            <h2 className='text-xl'>Add a Product</h2>
 
 
             <form className='justify-center' onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
-                        <span className="label-text">Name</span>
+                        <span className="label-text">Product Name</span>
                     </label>
                     <input {...register("name", {
                         required: {
                             value: true,
                             message: "Name is required"
                         }
-                    })} type="text" placeholder="Write your name" className="input input-bordered w-full max-w-xs" />
+                    })} type="text" placeholder="Write product name" className="input input-bordered w-full max-w-xs" />
                     <label className="label">
                         {errors.name?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.name.message}</span>}
                     </label>
@@ -78,49 +80,61 @@ const AddReview = () => {
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
-                        <span className="label-text">Email</span>
+                        <span className="label-text">Price</span>
                     </label>
-                    <input {...register("email", {
+                    <input {...register("price", {
                         required: {
                             value: true,
-                            message: "Email is required"
-                        },
-                        pattern: {
-                            value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                            message: 'Provide a valid Email'
+                            message: "Write product price"
                         }
-                    })} type="email" placeholder="Enter your email address" className="input input-bordered w-full max-w-xs" />
+                    })} type="number" placeholder="Write Product price" className="input input-bordered w-full max-w-xs" />
                     <label className="label">
-                        {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
-                        {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
+                        {errors.price?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.price.message}</span>}
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
-                        <span className="label-text">Review</span>
+                        <span className="label-text">Purchase minimumQuantity</span>
                     </label>
-                    <textarea {...register("review", {
+                    <input {...register("minimumQuantity", {
                         required: {
                             value: true,
-                            message: "Write Your review"
+                            message: "Write minimumQuantity"
                         }
-                    })} type="text" placeholder="Write Your review" className="input input-bordered w-full max-w-xs" />
+                    })} type="number" placeholder="Write Product minimumQuantity" className="input input-bordered w-full max-w-xs" />
                     <label className="label">
-                        {errors.review?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.review.message}</span>}
+                        {errors.minimumQuantity?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.minimumQuantity.message}</span>}
                     </label>
                 </div>
+
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
-                        <span className="label-text">Country</span>
+                        <span className="label-text">Product availableQuantity</span>
                     </label>
-                    <input {...register("country", {
+                    <input {...register("availableQuantity", {
                         required: {
                             value: true,
-                            message: "Write Your Country Name"
+                            message: "Write minimumQuantity"
                         }
-                    })} type="text" placeholder="Write Your review" className="input input-bordered w-full max-w-xs" />
+                    })} type="number" placeholder="Write Product minimumQuantity" className="input input-bordered w-full max-w-xs" />
                     <label className="label">
-                        {errors.country?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.country.message}</span>}
+                        {errors.availableQuantity?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.availableQuantity.message}</span>}
+                    </label>
+                </div>
+
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Description</span>
+                    </label>
+                    <textarea {...register("about", {
+                        required: {
+                            value: true,
+                            message: "Write Product description"
+                        }
+                    })} type="text" placeholder="Write Product description " className="input input-bordered w-full max-w-xs" />
+                    <label className="label">
+                        {errors.about?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.about.message}</span>}
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
@@ -144,4 +158,4 @@ const AddReview = () => {
     );
 };
 
-export default AddReview;
+export default AddProduct;
